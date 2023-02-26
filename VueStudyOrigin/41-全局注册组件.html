@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <Hello></Hello>
+        <Hi1></Hi1>
+    </div>
+    <script>
+        /*
+组件在局部注册：在哪里注册只能在对应的模板内注册
+
+组件在全局注册：只要注册好，在任何组件中都可以使用
+        */
+        let Hi=Vue.extend({
+            template:`<h2>我是Hi组件</h2>`
+        })
+        Vue.component("Hi1",Hi);
+        let Hello=Vue.extend({
+            template:`<h2>我是Hello组件</h2>`
+        })
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                }
+            },
+            components:{//组件
+                //注册组件，注册名：组件名  或者直接  组件名
+                Hello
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!--select中的v-model收集到的是option中的value值-->
+        <select v-model="fruit">
+            <option value="apple" >apple</option>
+            <option value="peach">peach</option>
+            <option value="banana" >banana</option>
+            <option >西瓜</option>
+        </select>
+        <!--收集select选中的数据-->
+        <p>选中了什么水果：{{fruit}}</p>
+
+        <!--多选的select呢
+        multiple可以多选多个选项
+    按住ctrl可以同时选中多个
+size可以在可视区域显示多少个选项-->
+
+        <select multiple size="2" v-model="fruits">
+            <option value="apple">苹果</option>
+            <option value="orange">橘子</option>
+            <option value="banana">香蕉</option>
+            <option value="pear">梨</option>
+            <option value="peach">桃子</option>
+        </select>
+        <p>选中了什么水果：{{fruits}}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    fruit:"apple",
+                    fruits:[]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

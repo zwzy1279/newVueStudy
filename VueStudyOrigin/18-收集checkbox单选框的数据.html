@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!--v-model在单选框中拿到的是checked的值-->
+        <input type="checkbox" v-model="isAgree" ><a href="" >同意xxx协议</a>
+        <!--如何拿到checked单选框是否被选中的数据-->
+        <p>单选框是否被选中：{{isAgree}}</p>
+
+        <!--还可以是全写，v-model是单选框中checked和@change的语法糖的语法糖-->
+        <input type="checkbox" :checked="isAgree" @change="isAgree=$event.target.checked"><a href="" >同意xxx协议</a>
+        <p>单选框是否被选中：{{isAgree}}</p>
+
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    isAgree:false
+                }
+            }
+        })
+    </script>
+</body>
+</html>

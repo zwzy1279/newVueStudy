@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2 v-text="name"></h2>
+
+        <h2 v-text="msg"></h2>
+        <h2 v-html="msg"></h2>
+    </div>
+    <script>
+        /*
+        将data数据放在文本节点处，我们可以用
+        1.小胡子语法{{}}
+        2.v-text在属性名的位置上，也是可以将data中的数据放在属性节点上。v-text其实是小胡子{{}}的语法糖，语法糖的意思就是简写
+
+        v-text并不会解析标签，当data中数据的值有标签需要解析时，我们可以用v-html
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    msg:"<p style='color:pink'>hhhhh</p>"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

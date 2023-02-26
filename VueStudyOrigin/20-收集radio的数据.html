@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+
+        <!--v-model在radio中收集到的也是value的值，所以需要我们提前增加上去-->
+        <input type="radio"  name="sex" v-model="gender" value="male">男
+        <input type="radio"  name="sex" v-model="gender" value="female">女
+        <!--收集复选框选中的数据-->
+        <p>选中的性别是:{{gender}}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    gender:"male"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

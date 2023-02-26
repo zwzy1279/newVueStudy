@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>{{1}}</h2>
+        <h2>{{1+2}}</h2>
+        <h2>{{true}}</h2>
+    </div>
+    <h2>{{name}}</h2><!--{{name}}-->
+    <script>
+        /*
+            插值语法：
+            插值也就是小胡子{{}}。
+            他是用来获取data中的数据的
+            1.只能放在文本节点，不能放在属性节点上
+            2.只能在模板内部中使用，在模板外部使用会被当成是字符串
+            3.{{}}中除了是data中的名字，还可以是表达式。
+            4.表达式就是由值得式子，比如说{{1}}，{{1+2}}，{{true}}
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style:none;
+            float:left;
+            width:60px;
+            height:20px;
+            margin-right:2px;
+            border:solid 1px black;
+            font-size:10px;
+        }
+        .active {
+            background-color:skyblue;
+        }
+    </style>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <ul v-for="(item,index) in arr">
+            <li @click="changeCurrent(index)" :class="{active:currentIndex==index}">{{item}}</li>
+        </ul>
+        <!--:class后面带上的不是对象就是数组，是否呈现，可以设置true或者false-->
+    </div>
+    <script>
+        /*
+当点击某一个小li时，让他颜色变亮
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    arr:["前端","后端","测试","产品经理","UI","小程序","安卓"],
+                    currentIndex:0//当前的索引
+                }
+            },
+            methods:{
+                changeCurrent(index){
+                    this.currentIndex=index;//当前索引是被点击的那一个
+                }
+            }
+        })
+    </script>
+</body>
+</html>

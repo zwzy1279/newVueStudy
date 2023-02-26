@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!--<div v-if="number==1">
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+        </div>
+        <div v-if="number==2">
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+        </div>-->
+        <!--向让文档中不要出现多个嵌套在外面的div怎么办呢，可以将div改为template-->
+        <template v-if="number==1">
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+            <div>xixi</div>
+        </template>
+        <template v-if="number==2">
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+            <div>haha</div>
+        </template>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    number:2
+                }
+            }
+        })
+    </script>
+</body>
+</html>

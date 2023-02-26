@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click="handle">显示或者隐藏</button>
+        <div style="background-color:pink; width:100px; height:100px" v-if="flag"></div>
+    </div>
+    <script>
+        /*
+v-if用来控制要渲染还是要销毁
+后面接的是表达式，表达式就是有值的，会在转化为false或者true的布尔值
+当v-if后面的值为true时，data中的数据会被渲染到模板上，当为false时，data中的数据不会被渲染到模板上
+v-if每次渲染与销毁都需要创建和销毁dom对象，操作太频繁了，性能太差
+
+有v-if,就有v-else-if
+v-else
+但是他们中间不能有其他的语句，不然会报错
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    flag:true
+                }
+            },
+            methods:{
+                handle(){
+                    this.flag=!this.flag;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

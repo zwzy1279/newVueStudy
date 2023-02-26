@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style>
+        .box1{
+            width:100px;
+            height:100px;
+            background:skyblue;
+        }
+        .red{
+            width:100px;
+            height:100px;
+            background:red;
+        }
+        .yellow{
+            width:100px;
+            height:100px;
+            background:yellow;
+        }
+        .bfa{
+            width:100px;
+            height:100px;
+            background:#bfa;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <div class="box1">我是box1</div>
+        <hr>
+        <!--第一种-----动态类名的单个状态的写法-->
+        <!--一般我们用class="类名" 的写法是将类名写死的。而我们想要一个动态的类名，那么我们可以用
+        :class="状态名"的写法，这个状态名我们可以将它写在data数据中，-->
+        <div :class="box2">我是box2</div><!--会以这样子解析出来 class="box1"-->
+
+        <hr>
+        <!--第二种-----动态类名的对象写法-->
+        <div :class="{'red':true,'yellow':true}"></div>
+        <br>
+        <div :class="obj"></div>
+        
+        <hr>
+        <!--第三种----动态类名的数组写法-->
+        <div :class="['yellow','bfa']"></div>
+        <br>
+        <div :class="arr"></div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    box2:"box1",
+                    obj:{
+                        bfa:true
+                    },
+                    arr:[
+                        'red'
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

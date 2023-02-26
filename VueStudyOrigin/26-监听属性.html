@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <br/>
+        <button @click="a.b.c--">-</button>
+        <span>{{a.b.c}}</span>
+        <button @click="a.b.c++">+</button>
+    </div>
+    <script>
+        /*
+watch监听器属性：
+在开发中，在data中定义状态，当数据变化了，模板会自动重新渲染但是有些情况下，我们不只要去重新渲染模板，还需要做一些其它事情此时，就可以使用侦听器了。
+我们知道data的数据会渲染到模板上，但有些时候我们不只是要重新渲染模板，还要有其他用途，就用到了watch
+
+第一种写法：在watch里面写成函数的形式
+watch:{
+    name(){
+        console.log("输入框内容发生变化了");
+    }
+}
+第二种写法：在watch里面写成对象的形式
+name:{//当name数据发生变化时，会触发后面的handler方法
+                    handler(){//固定的方法名
+                        console.log("输入框发生了变化");
+                    }
+                }
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    a:{
+                        b:{
+                            c:100
+                        }
+                    }
+                }
+            },
+            watch:{
+                name(){//当name这个数据发生变化时，会自动触发函数
+                    console.log("输入框内容发生变化了");
+                },
+                a:{
+                    deep:true,//开启深度监听
+                    //immediate:true,//一上来就开启监听器
+                    handler(newValue,oldValue){//当a中最里层的c发生变化时，并不会触发到最外层的a变化，这个时候我们就需要深度监听
+                        console.log("a发生了变化",newValue,oldValue);
+                        //监听器里头可以写异步代码
+                        //setTimeout(()=>{this.a.b.c=200},2000)
+                    }
+                }
+                
+            }
+        })
+    </script>
+</body>
+</html>

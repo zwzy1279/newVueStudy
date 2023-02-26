@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+       <!--3.使用组件-->
+       <X1></X1><!--使用的是注册名-->
+    </div>
+    <script>
+        /*
+        Vue的特点：支持组件化，声明式编程（在合适的位置写合适的代码）, 虚拟dom和diff算法
+
+        组件是什么呢，能干嘛呢
+        组件化开发：一个页面我们可以分成好多个模块，每个模块都有自己的功能，我们可以将这件模块拆分后，后米需要我们就可以像搭积木那样去搭建我们的项目了
+        把这些模块叫做组件，后续一个项目就是在用组件来搭，便于维护
+
+        组件怎么使用呢：三部曲  我们定义这件组件都是在根组件vm中的子组件，有一个组件树
+        1.定义一个组件：
+            用Vue.extend()去返回一个组件类，这个类不需要我们自己去new来得到一个对象，vue会自动帮我们实现
+        2.注册组件
+            在components进行配置进行注册组件
+        3.使用组件
+           像标签名一样去使用，自定义标签，一般首字母大写
+           在哪里注册，只能再对应的模板里使用
+        */
+        //1.定义组件，配置的数据跟Vm中的写法是一样的
+        let X=Vue.extend({
+            //普通组件也有模板，但是只有根组件才能使用el与模板进行关联
+            //普通组件匹配模板用的是template,模板就是html代码，最好是在外头写好之后再剪切进来
+            template:' <h1>普通组件的hello</h1>',
+            data(){
+                return {
+                    age:12
+                }
+            }
+        });
+        console.log(X);/*
+ƒ VueComponent(options) {
+              this._init(options);
+          }是一个函数，一个类,这个类的名称叫做Components
+        */ 
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            //2.注册组件
+            components:{//第一个是注册名，第二个组件，后续使用的是注册名
+                X1:X
+            }
+        })
+    </script>
+</body>
+</html>

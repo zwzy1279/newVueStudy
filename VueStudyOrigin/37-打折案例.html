@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:500px;
+            height:100px;
+        }
+        tr td{
+            width:500px;
+            height:25px;
+            border:solid 1px black;
+            text-align:center;
+        }
+    </style>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <table>
+            <caption>打折案例</caption>
+            <tr><td>香蕉{{price}}￥/斤，折&lt;{{discount}}折&gt;</td></tr>
+            <tr><td>请输入你要购买的斤数<input type="text" placeholder="斤数" v-model="num"></td></tr>
+            <tr><td><button @click="computedPrice">结账买单~</button></td></tr>
+            <tr><td>
+                结账单:
+                <span>总价:{{totalPrice}}￥元</span>
+                <span>折后价:{{discountPrice}}￥元</span>
+                <span>省了:{{cheapPrice}}￥元</span>
+            </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        /*
+            打折案例：
+            规定香蕉和打几折
+            当我们输入斤数和点击结账按钮时，数据呈现在最后一行的结账单上
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    price:10,//香蕉原本的价格
+                    discount:.8,//折扣的价格
+                    num:0,//输入的斤数
+                    totalPrice:0,//总的价钱
+                    discountPrice:0,//折扣后的价格
+                    cheapPrice:0//省了的钱
+                }
+            },
+            methods:{
+                computedPrice(){
+                    this.totalPrice=this.price*this.num;
+                    this.discountPrice=this.totalPrice*this.discount;
+                    this.cheapPrice=this.totalPrice-this.discountPrice;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

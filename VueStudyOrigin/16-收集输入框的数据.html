@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!--不使用v-model的双向绑定方法-->
+        <input type="text"  :value="name" @input="handle">
+
+        <h1>{{name}}</h1>
+        <!--v-model-->
+        <input type="password" v-model:value="word">
+        <h2>{{word}}</h2>
+
+        
+        <!--:value也就是让这个文本框，这个模板拿到data中的数据，而input是拿到现在的输入的数据-->
+        <input type="text" :value="name" @input="name=$event.target.value">
+        <h2>{{name}}</h2>
+    </div>
+    <script>
+        /*
+v-model双向绑定的基本使用再输入框
+如果输入框是文本输入框时，v-model是@input事件和value的语法糖，语法糖就是简写。原来不用v-model也可以实现双向绑定，但是需要input和value
+@是v-on绑定事件的简写
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    word:"123456"
+                }
+            },
+            methods:{
+                handle(e){
+                    this.name=e.target.value;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

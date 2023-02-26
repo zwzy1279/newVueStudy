@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click="handle">点我</button>
+        <button @click="handle1(666)">点我1</button>
+        <button @click="handle2(666,888,$event)">点我2</button>
+        <!--这里虽然是双引号，但是handle不能够看作是字符串
+        没有双引号可以看作是函数调用
+    但是这里是返回的不是一个值，如果是函数调用的话，这里返回的是一个undefined
+vue自己会进行处理的
+
+事件对象需要自己手动传参$event-->
+    
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            methods:{
+                handle(){
+                    console.log("没有参数的handle");
+                },
+                handle1(num){
+                    console.log("有参数的handle1"+num);
+                },
+                handle2(num1,num2,e){//如何获取事件对象呢，通过函数调用处传递$event为事件对象
+                    console.log("有事件对象和参数的handle2"+num1+","+num2+","+e);
+                    console.log(e);//e为事件对象
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>

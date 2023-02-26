@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <div>
+            姓名：
+            <input type="text" v-model.trim="newPerson.name">
+        </div>
+        <div>
+            年龄：
+            <input type="number" v-model.trim="newPerson.age">
+        </div>
+        <div>
+            性别：
+            <select v-model.trim="newPerson.sex">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+            <button @click="addOrchange">添加/修改</button>
+        </div>
+        <div>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>性别</td>
+                    <td>操作</td>
+                </tr>
+                <tr v-for="(item,index) in persons">
+                    <td>{{index+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.sex}}</td>
+                    <td>
+                        <button @click="remove(index)">删除</button>
+                        <button @click="edit(index)">编辑</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        /*
+        当点击删除的按钮时，该行的数据会被删除
+
+        当输入数据后，这些数据会被收集起来，并且当点击添加的按钮时，数据会被加入到persons的数组中
+
+        当点击删除旁边的编辑时，该行的数据会在输入框重显，当自己修改完毕后
+        点击添加旁边的修改时，再将修改完的数据传回persons中
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    editIndex:null,
+                    newPerson:{
+                        name:"",
+                        age:"",
+                        sex:"男"
+                    },
+
+                    persons:[
+                    {
+                        name:'张三',
+                        age:33,
+                        sex:"男"
+                    },
+                    {
+                        name:'李四',
+                        age:23,
+                        sex:"男"
+                    },
+                    {
+                        name:'王五',
+                        age:19,
+                        sex:"女"
+                    }
+                    ]
+                }
+            },
+            methods:{
+                remove(index){
+                    this.persons.splice(index,1);
+                },
+                addOrchange(){
+                    let newObj={...this.newPerson};
+                    if(this.editIndex!=null){
+                        //说明处于编辑状态
+                        this.$set(this.persons,this.editIndex,newObj);
+                        this.editIndex=null;
+                    }else{
+                        this.persons.push(newObj);
+                    }
+                },
+                edit(index){
+                    let editObj=this.persons[index];//当点击删除旁边的编辑时，该行的数据会在输入框重显
+                    this.newPerson={...editObj};
+                }
+            }
+        })
+    </script>
+</body>
+</html>

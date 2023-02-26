@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click="handle">显示或者隐藏</button>
+        <div style="background-color:skyblue;width:100px;height:100px" v-show="flag"></div>
+    </div>
+    <script>
+        /*
+v-show也是控制data中的数据是否渲染到模板身上，后面接的也是一个表达式，会转成布尔值
+v-show和v-if的区别就是
+v-show不管要隐藏还是显示，他都会把dom元素给创建出来，然后再进行隐藏或者显示display
+v-if是不论要隐藏还是显示，他每次都会创建一个新的dom元素，然后再进行销毁或者创建，性能极差
+所以如果要频繁的显示或者隐藏，选择v-show是最好的
+
+v-show不能用template标签
+v-if和v-show的区别?
+1)v-if是控制元素的创建或销毁,每次创建出来的都是新的,很耗性能
+2)v-if后面条件如果为false,DOM元素压根就不会创建,是情性的
+3)v-show后面的条件不是管是true还是false,DOM元素肯定都会创建,只不过通过d
+4)v-show不支持template标签,v-if支持template标签
+5)v-if会导致浏览器的重排(重排一定会引用重绘),V-show仅仅会导致重给
+6)如果频繁控制元素的显示与隐藏，推荐使用V-show 
+*/
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    flag:true
+                }
+            },
+            methods:{
+                handle(){
+                    this.flag=!this.flag;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

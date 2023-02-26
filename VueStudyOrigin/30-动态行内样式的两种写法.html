@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div style="width:100px;height:100px;background-color:skyblue"></div>
+        <hr>
+        <!-- 1.动态行内样式之对象的写法,双引号里面不能再有双引号，只能是单引号-，对象的写法，属性的值要加上引号,属性与属性之间用逗号隔开-->
+        <div :style="{width:'100px',height:'100px',backgroundColor:'pink'}"></div>
+        <br/>
+        <!--对象的写法也可以将对象写在data数据中-->
+        <div :style="obj"></div>
+        
+        <hr>
+        <!-- 2.动态行内样式之数组的写法,数组里面放的是对象-->
+        <div :style="[{width:'100px',height:'100px',backgroundColor:'pink'}]"></div>
+        <br/>
+        <!--数组写法也可以将数组写在data数据中-->
+        <div :Style="arr"></div>
+    </div>
+    <script>
+        /*
+        本来我们写的行内样式是固定不变的，现在我们想要拥有动态的行内样式 :style="" 双引号内跟的是对象或者数组
+
+        动态行内样式的第一种写法
+        1.动态行内样式之对象的写法
+        2.动态行内样式之数组的写法
+        
+
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    obj:{//可以通过vm操作data中的数据，但他不能添加其他的元素，
+                        //vm.obj.width="200px"是可以改变原有的值的
+                        //但是vm.obj.border="solid 1px red";是添加不了新的数据的
+                        //后期想要添加响应式数据得用 vm.$set(vm.obj,'border',"solid 1px red");用逗号隔开
+                        //对象中的属性加不加双引号都会解析成有引号的，所以加不加都行
+                        width:"100px",
+                        height:"100px",
+                        backgroundColor:"#bfa"
+                    },
+                    arr:[
+                    {
+                        //对象中的属性加不加双引号都会解析成有引号的，所以加不加都行
+                        width:"100px",
+                        height:"100px",
+                        backgroundColor:"#bfa"
+                    }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

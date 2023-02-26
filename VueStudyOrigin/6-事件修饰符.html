@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <form action="http://www.baidu.com">
+            <button @click.prevent="handle">提交</button>
+        </form>
+
+        <!--css内联式写法，多条语句用分号隔开-->
+        <div style="width:100px;height:100px;background-color:pink" @click="handle1">
+            <button @click.stop="handle2">点我</button>
+        </div>
+
+        <button @click.once="handle3">点我</button>
+    </div>
+  
+    <script>
+        /*
+我们可以通过
+1.对事件对象调用一些方法
+或者
+2.对事件进行修饰
+来达到对一些功能的限制，比如说阻止冒泡，阻止默认行为，或者只能触发一次的按钮
+        */
+        /*
+1.阻止默认行为：我们知道一般表单form或者a标签都能够跳转到其他页面，这种默认的行为我们可以通过以下来阻止
+  1）调用事件对象的e.preventDefault()方法
+  2）对事件进行.prevent来进行限制
+
+2.阻止冒泡：当点击最里层的div，不仅会触发到最里层的div，还会一直冒泡到最外层，最里层除外的外层也会被触发到
+  1)e.stopPropagation()
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            methods:{
+                handle(e){
+                    //e.preventDefault();
+                    console.log("提交按钮了");
+                },
+                handle1(){
+                    console.log("外层的div");
+                },
+                handle2(){
+                    console.log("里层的button")
+                },
+                handle3(){
+                    console.log("只能点一次");
+                }
+
+
+            }
+        })
+    </script>
+</body>
+</html>

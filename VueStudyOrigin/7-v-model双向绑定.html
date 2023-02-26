@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+    </div>
+    <script>
+        /*
+双向绑定是什么呢
+v-model改变输入框的value值
+就是指模板  vue源码  data中的数据之间的互相触发
+我们知道通过小胡子，可以将data中的数据渲染给模板使用
+v-model指令的，还可以通过改变模板，改变data中的数据
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

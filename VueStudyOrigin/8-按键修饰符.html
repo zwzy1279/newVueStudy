@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+
+        请输入你喜欢的人的名字：<input type="text" v-model="name" @keyup.enter="handle">
+    </div>
+    <script>
+        /*
+        我们可以通过事件对象来获得当前的按键，e.key,e.keyCode
+        或者可以在事件上加上按键修饰符
+
+        请输入你喜欢的人的名字，当按下回车键时，就将名字调用函数打印出来
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            methods:{
+                handle(e){
+                    //if(e.key=="Enter"){
+                    //    console.log("你最喜欢的人的名字是："+this.name);
+                    //}
+
+                    console.log("你最喜欢的人的名字是："+this.name);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

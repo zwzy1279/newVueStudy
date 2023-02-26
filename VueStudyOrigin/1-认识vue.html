@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}</p>
+    </div>
+    <script>
+        /*
+        什么是vue呢
+        我们通常所说的vue是指vue.js
+        而vue全家桶是指vue的技术栈，包括最核心的vue.js,还有路由，webpack,es6,axios,脚手架等等
+        得把Vue全家桶全部学了我们才能写项目。我们现在先学vue2.x,因为vue3是基于2写的，学会了vue2，后面只需要再花两天的时间学习vue3
+
+        vue就是一种框架，一种在合适的位置写合适的代码，是一种规范，规则
+        Vue是一个类，new出来后返回一个对象。需要配置一些对象在vue类的参数中
+        规定只能由一个vm实例，vm是new Vue对象出来的一个根实例
+        el后面接的是选择器的名称，一般是id选择器。让vue对象跟选中的选择器模板进行关联
+        data是一个函数，这里用的是es6-13的简写。后面的数据是响应式数据，可以用来重新绘制用户界面，渲染页面的数据
+        模板中如何用data中的数据，分为用在文本节点和属性节点，文本节点一般用{{}}即可。属性节点一般得用指令
+        */
+        var vm=new Vue({//new Vue时，需要传递一个配置对象
+            el:"#root",//el跟某个模板进行关联，模板是指script代码段以外的
+            data(){//data用来给 模板提供数据，data 中的数据会挂在到vm实例对象上//数据变了，模板会重新渲染//可以通过vm去用data中的数据
+                console.log(this);
+               return {//data中的数据需要返回一个对象
+                name:"张三"
+               }
+            }
+        })
+    </script>
+</body>
+</html>

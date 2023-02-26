@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <!--把按钮的案例写在组件里面-->
+        <!--<Hello1></Hello1>这个不能在根组件中使用，只能是在哪里注册，就在哪里使用-->
+        <P1><!--<Hello1></Hello1>也不再这里使用，在哪里注册，在哪里用--></P1>
+        <P1></P1>
+        <P1></P1>
+    </div>
+    <script>
+        let Hello=Vue.extend({
+            template:'<h2>hello,我是普通组件里的组件</h2>'//写在他的母组件的component中
+        })
+        let P=Vue.extend({
+            template:` 
+            <div><button @click="decrement">-</button>
+                <span>{{num}}</span>
+                <button @click="increment">+</button>
+                <Hello1></Hello1>
+            </div>`,
+            data(){
+                return{
+                    num:0
+                };
+            },
+            methods:{
+                decrement(){
+                    this.num--;
+                },
+                increment(){
+                    this.num++;
+                }
+            },
+            components:{
+               Hello1:Hello
+            }
+        })
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            components:{
+                P1:P
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <ul v-for="(item,index) in arr">
+            <li><input type="checkbox" v-model="newarr" :value="item">{{item}}</li>
+        </ul>
+        <hr>
+        <!--上面选中的数据在下面显示出来-->
+        <ul v-for="(item,index) in newarr">
+            <li>{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    arr:["前端","后端","测试","产品经理","UI","小程序","安卓"],
+                    newarr:[]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

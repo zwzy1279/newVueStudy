@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <a href="{{img}}">小胡子的链接</a>
+        <a href="img">没有小胡子的链接</a><!--解析为字符串-->
+        <a v-bind:href="img">有v-bind的链接</a><!--只有这个才是完整的百度网址的解析-->
+    </div>
+    <script>
+        /*
+                把data中的数据绑定到文本节点处，我们用小胡子{{}}
+                那如何绑定到属性节点处呢，
+                把data中的数据绑定到属性节点上，我们用v-bind：写在属性前面，后面接的属性值就能够直接是data中的数据，并且能够被vue解析出来了
+                
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    img:"http://www.baidu.com"
+
+                }
+                
+            },
+           
+        })
+    </script>
+</body>
+</html>

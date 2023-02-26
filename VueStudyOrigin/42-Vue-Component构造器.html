@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
+    <script>
+          /*
+        Vue vm VueComponent vc四者之间的关系
+        Vue是一个类，vm是new Vue出来的一个实例对象
+        类上有原型属性：prototype，指向Vue的原型对象
+        vm对象上有隐式属性：__proto__，指向Vue的原型对象
+        VueComponent.prototype.__proto__ === Vue.prototype
+        
+        VueComponent是Vue.extend函数构造的类
+        正式因为是一个类，所以他也是可以被new出来对象的，但我们没必要多此一举，交给vue底层去实现就好了
+        new出来的实例对象vc,或者自动生成的vc，都是组件的实例对象（VueComponent的实例，不是Vue的实例。Vue实例我们一般叫做vm,VueComponent实例一般叫做vc），他的隐式原型指向vm2实例原型对象，这个类本身也指向vm的原型对象
+        而这个原型对象实例的隐式原型也是指向vue的原型对象
+        在Vue中这个VueComponent不需要我们去new对象，Vue机制会自动帮我们new出来，当成标签去用的vc
+        vc这个组件的实例对象有隐式属性__proto__，也是指向vm2实例的
+        VueComponent这个类的原型属性，也叫原型对象，是指向vm2实例的
+        而这个vm2实例对象的隐式原型也是指向Vue的原型对象的
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

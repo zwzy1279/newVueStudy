@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!--1.直接在小胡子内进行计算-->
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text"  v-model="lastName">
+        <p>姓名：{{firstName+lastName}}</p>
+
+        <hr>
+        <!--2.在methods内进行计算-->
+        <p>姓名：{{fullName()}}</p>
+
+        <hr>
+        <!--3.在computed计算属性中计算,-->
+        <p>姓名：{{allName}}</p>
+    </div>
+    <script>
+        /*
+需要data中的数据进行计算的有以下三种方法
+1.直接在小胡子内进行计算
+2.在methods内进行计算
+3.在computed计算属性中计算,conputed里面的写成函数的形式，但实际上不是函数，而只是一个对象
+        */
+        /*
+计算属性：
+//写成函数的模样，但在使用时作为对象去使用，不能加括号
+//计算属性：就是计算在原有的数据上进行计算，一旦这些数据发生变化时，就会触发去计算
+//在开发中能够使用计算属性就用计算属性
+
+计算属性内容有以下的写法
+1.写成函数的形式
+conputed:{
+    allName(){
+        return this.name;
+    }
+}
+2.写成对象的形式,一般用得不多
+conputed:{
+    allName:{
+        //使用计算属性走get
+        get(){
+            return this.name;
+        },
+        //修改计算属性走set
+        set(value){
+            this.name=value;
+        }
+    }
+}
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    firstName:"",
+                    lastName:""
+                }
+            },
+            methods:{
+                fullName(){
+                    return this.firstName+this.lastName;
+                }
+            },
+            computed:{//写成函数的模样，但在使用时作为对象去使用，不能加括号
+                //计算属性：就是计算在原有的数据上进行计算，一旦这些数据发生变化时，就会触发去计算
+                //在开发中能够使用计算属性就用计算属性
+                allName(){
+                    //计算属性不能够写异步代码，在watch监听器属性中能够写异步代码
+                    //setTimeout(()=>{return this.firstName+this.lastName;},2000);
+                    return this.firstName+this.lastName;
+                },
+                
+            }
+        })
+    </script>
+</body>
+</html>

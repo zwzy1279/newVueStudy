@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
+    <script>
+        /*
+        Vue vm VueComponent vc四者之间的关系
+        Vue是一个类，vm是new Vue出来的一个实例对象
+        类上有原型属性：prototype，指向Vue的原型对象
+        vm对象上有隐式属性：__proto__，指向Vue的原型对象
+        VueComponent.prototype.__proto__ === Vue.prototype
+        
+        VueComponent是Vue.extend函数构造的类
+        在Vue中这个VueComponent不需要我们去new对象，Vue机制会自动帮我们new出来，当成标签去用的vc
+        vc这个组件的实例对象有隐式属性__proto__，也是指向vm2实例的
+        VueComponent这个类的原型属性，也叫原型对象，是指向vm2实例的
+        而这个vm2实例对象的隐式原型也是指向Vue的原型对象的
+        */
+        /*
+        为什么vm中data的用函数的形式而不是用对象的形式
+        保证每个组件的data是互相独立的
+        因为函数各个调用是互相独立的，而对象传的是地址，最终值是会改变的，我们为了后续的普通组件也能够使用data而不影响根组件的vue,我们在根组件的data使用函数的形式
+        */
+        var obj={
+            a:12
+        }
+        let x1=obj;
+        let x2=obj;
+        x1.a=13;
+        console.log(x2.a);//13,原有的值已经被改变了
+
+        function fn(){
+            return {
+                b:1
+            }
+        }
+        let x3=fn();//函数调用是独立的，而对象是将地址传过来，最终是一起改变
+        let x4=fn();
+        x4.b=5;
+        console.log(x3);//1
+        console.log(x4);//5
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

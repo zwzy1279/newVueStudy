@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style>
+        .box {
+            width:300px;
+            height:200px;
+            background-color:black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <div class="box" :style="{background:`rgb(${r},${g},${b})`}"></div>
+        <!--<div class="box" :style='{background:`rgb(${r},${g},${b})`}'></div>-->
+        
+        <p>
+            R:<input type="range" min="0" max="255" v-model.number="r">
+            <span>{{r}}</span>
+        </p>
+        <p>
+            G:<input type="range" min="0" max="255" v-model.number="g">
+            <span>{{g}}</span>
+        </p>
+        <p>
+            B:<input type="range" min="0" max="255" v-model.number="b">
+            <span>{{b}}</span>
+        </p>
+    </div>
+    <script>
+        /*
+        调试板案例：
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    r:0,
+                    g:0,
+                    b:0
+                }
+            }
+        })
+    </script>
+</body>
+</html>

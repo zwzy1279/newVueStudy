@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button v-on:click="handle">点我</button>
+        <button @click="handle2">点我呀</button>
+    </div>
+    <script>
+        /*
+自定义属性，例如：<h1 abc="123">{{name}}</h1>
+在Vue中我们用v-什么来定义自定义属性
+v-on用来绑定事件的，他的语法是  v-on:事件名称："调用程序"//data中的数据在v-什么后不需要小胡子
+也可以简写成                   @事件名称：“调用程序”
+用v-什么的指令可以将data中的数据用在属性节点上
+
+这些调用程序可以写在methods对象中，而不写在data中
+
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            },
+            methods:{
+                handle(){
+                    console.log("点我干嘛");
+                },
+                handle2(e){
+                    console.log(this);//this指的是vm实例对象，所以可通过this进行访问调用
+                    this.name="各自忙碌，互相牵挂";
+                    console.log("你又点我干嘛"+e);
+                }
+                //这里的方法的完整写法是这样子的，只是在es6中给省略掉了而已
+                /*
+                    handle:function(){
+                        console.log("hhhh");
+                    }
+                */
+                //这里的方法不要写成箭头函数，因为箭头函数的this是指向window的
+                /*
+                    handle:()=>{
+                        console.log("hhhh");
+                    }
+                */ 
+
+            }
+        })
+    </script>
+</body>
+</html>

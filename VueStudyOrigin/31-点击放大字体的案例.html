@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <hr>
+        <button @click="handler">点我文字变大</button>
+        <p :style="{fontSize:fs+'px',color:'pink'}">寒假呀弯道超车呀</p>
+    </div>
+    <script>
+        /*
+        点击放大字体的案例
+        当我们点击按钮时，文字的字体会变大
+        */
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎",
+                    fs:14
+                }
+            },
+            methods:{
+                handler(){
+                    this.fs++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

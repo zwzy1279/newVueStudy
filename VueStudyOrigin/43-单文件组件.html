@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
+    <script>
+        /*
+组件都有自己的模板，js逻辑，样式
+<template></template>
+<script>记得导出，子组件要到处到根组件来使用
+<style></style>
+
+一个项目有好多个组件，一个组件是一个模块，专门实现一个功能。
+在开发中，一个组件就是一个模块，一个组件就是一个文件。也就是说一个组件就是一个文件，所以叫做单文件组件
+文件的后缀名：.vue。这样的组件简称SFC,Sing File Component,单文件组件
+
+特点：
+一个组件就是一个文件，便于维护
+SFC代码高亮，需要安装插件：Vetur Volar(官方推荐)
+组件作用域的css，写的css，只能在当前的组件有效
+
+模块化：
+导入  导出
+CommmontJS模块化
+ES6Module
+
+如何让项目支持单文件组件，也就是SFC
+1）自己配置webpack(后面学)
+2)使用脚手架
+
+使用脚手架：
+npm install @vue/cli -g
+
+使用脚手架创建项目：
+vue create myapp
+
+1.在cmd中输入  npm install @vue/cli -g  安装完毕之后
+2.按照尚硅谷的视频安装脚手架
+---------------------------------
+myapp
+  node_modules  项目中用到的第三方依赖
+  后面写项目会用到很多依赖 npm i jq
+
+  public 
+  项目的一些资源  学习webpack时，会讲到
+  favicon.ico图标
+  index.html
+    <div id="app"></div>项目的容器  vm要与容器关联
+
+  src
+  放项目的源码，我们写的绝大部分代码都是放在src下面的
+  assets 也是放一些资源， css js img
+  components
+  放组件  SFC 单文件组件
+  HelloWorld.vue
+  App.vue  也是一个组件
+  main.js 项目入口  new Vue()
+
+  .broserslistrc
+  设置目标浏览器 后面讲 就是配置 现在不用管
+  .gittgnore
+   git的忽略文件
+   babel.config.js
+   babel的配置文件 现在不用管，后面讲
+   jsconfig.json
+   package.json
+   项目的依赖记录文件 项目的管理文件
+   Readme.md
+   项目说明
+
+  App.vue也是一个组件
+*/
+        
+        var vm=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    name:"曦黎"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
