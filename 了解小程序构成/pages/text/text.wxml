@@ -1,0 +1,18 @@
+<!--pages/text/text.wxml-->
+<view>hello world</view>
+<text>hello world</text>
+<view>
+  你好
+  <text>你好2</text>
+</view>
+<view>
+  你好
+  <text selectable="true">你好3</text>
+</view>
+<view>
+  <text><h1>一般text</h1></text>
+  <!--不显示-->
+</view>
+<view>
+  <rich-text nodes="<h1 style='color:pink;'>一般text</h1>"></rich-text>
+</view>

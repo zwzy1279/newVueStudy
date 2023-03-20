@@ -1,0 +1,36 @@
+/* pages/container/contatiner.wxss */
+.bigbox {
+  height:150px;
+}
+.box1 {
+  width:200rpx;/*1px=2rpx*/
+  height:100px;
+  background:pink;
+}
+.box2 {
+  width:200rpx;/*1px=2rpx*/
+  height:200rpx;
+  background:green;
+}
+.box3 {
+  width:100px;/*1px=2rpx*/
+  height:100px;
+  background:skyblue;
+}
+.bigbox3 {
+  display: flex;
+}
+/*
+wxss
+1、设置swiper组件的宽高 。
+2、设置swiper组件里面图片的宽高。
+注意：这里必须两个同时设置才能达到图片占满的效果
+*/
+swiper {
+  width:100%;
+  height:200px;
+}
+swiper-item image {
+  width:100%;
+  height:200px;
+}

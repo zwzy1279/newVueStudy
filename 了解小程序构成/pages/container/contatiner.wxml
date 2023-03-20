@@ -1,0 +1,36 @@
+<!--
+<scroll-view style="height:300rpx" scroll-y >
+ <view>
+  <view class="box1"></view>
+  <view class="box2"></view>
+  <view class="box3"></view>
+  </view>
+</scroll-view>-->
+
+
+<!--<scroll-view style="width:300rpx" scroll-x >
+ <view style="display: flex;width:800px">
+  <view class="box1"></view>
+  <view class="box2"></view>
+  <view class="box3"></view>
+  </view>
+</scroll-view>-->
+
+<!--轮播图-->
+<swiper autoplay indicator-dots="true" class="imgList" interval="2000" circular="true">
+  <swiper-item>
+    <image src="/images/1.webp"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/2.webp"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/6.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/7.webp"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/8.webp"></image>
+  </swiper-item>
+</swiper>

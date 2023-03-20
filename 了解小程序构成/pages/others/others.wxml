@@ -1,0 +1,15 @@
+<!--pages/others/others.wxml-->
+<!--button的使用-->
+<button bindtap="handler">我是一个按钮</button>
+<button type="primary">primary按钮</button>
+<button type="warn">warn按钮</button>
+<button type="default" >default按钮</button>
+<button size="mini">按钮</button>
+<button size="mini" plain>按钮</button>
+<!--image的使用-->
+<image src="/images/1.webp" ></image>
+<image src="/images/1.webp" style="width:100%;height:200px"></image>
+<image src="/images/1.webp" mode="heightFix"></image>
+<!--navigator的使用-->
+<navigator url="https://www.baidu.com/">百度</navigator>
+<navigator url="/pages/container/contatiner">container</navigator>
